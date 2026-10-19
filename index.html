@@ -370,6 +370,10 @@ footer small { color: var(--ink-soft); letter-spacing: 0.08em; }
 .bag-total { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 1rem; }
 .bag-total b { font-weight: 600; color: var(--gold-hi); font-variant-numeric: tabular-nums; }
 html[lang="ar"] .sizes .sz-l { font-size: 0.85rem; }
+.ship-note { display: flex; align-items: center; gap: 8px; margin: 14px 0 0; color: var(--ink-soft); font-size: 0.85rem; font-weight: 300; }
+.ship-note svg { width: 16px; height: 16px; flex: none; color: var(--gold); }
+.bag .ship-note { margin-top: 8px; font-size: 0.78rem; }
+html[lang="ar"] .ship-note { font-size: 0.95rem; }
 .empty { margin-top: 14px; color: var(--ink-soft); font-weight: 300; }
 .order { margin-top: 16px; }
 .order label { display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
@@ -638,6 +642,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
           <p class="note" id="shadeNote"></p>
           <div class="swatches" id="swatches" role="group" aria-label="Choose a shade" data-i18n-label="swatches.aria"></div>
           <div class="sizes" id="sizes" role="group" aria-label="Choose a size" data-i18n-label="sizes.aria"></div>
+          <p class="ship-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span data-i18n="ship.note">Shipping cost is confirmed on WhatsApp when you order.</span></p>
           <div class="buy">
             <button class="btn btn-gold" id="add" type="button" data-i18n="add">Add to bag</button>
             <small data-i18n="buy.note">Add as many shades as you like.</small>
@@ -695,6 +700,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
   <ul id="bagList"></ul>
   <p class="empty" id="bagEmpty" data-i18n="bag.empty">Your bag is empty. Pick a shade and tap Add to bag.</p>
   <div class="bag-total" id="bagTotal" hidden><span data-i18n="total">Total</span><b id="bagSum"></b></div>
+  <p class="ship-note" id="bagShip" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span data-i18n="ship.bag">Shipping not included. We will confirm it with you on WhatsApp.</span></p>
   <div class="order" id="orderBox" hidden>
     <label for="orderText" data-i18n="order.label">Your order message</label>
     <textarea id="orderText" readonly dir="auto"></textarea>
@@ -726,7 +732,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
       "shades.eyebrow": "The shades", "shades.h2": "Pick your gloss",
       "shades.p": "Tap a shade to see it on. Each one has its own finish and its own mood.",
       "stage.aria": "Lips wearing the selected gloss shade", "finish": "{f} finish",
-      "sizes.aria": "Choose a size", "size.label": "Size", "cur": "EGP", "total": "Total", "swatches.aria": "Choose a shade", "add": "Add to bag", "buy.note": "Add as many shades as you like.",
+      "ship.note": "Shipping cost is confirmed on WhatsApp when you order.", "ship.bag": "Shipping not included. We will confirm it with you on WhatsApp.", "ship.msg": "Shipping: to be confirmed", "sizes.aria": "Choose a size", "size.label": "Size", "cur": "EGP", "total": "Total", "swatches.aria": "Choose a shade", "add": "Add to bag", "buy.note": "Add as many shades as you like.",
       "story.eyebrow": "The YENA way", "story.h2": "Confidence is a <em>small</em> gesture.",
       "trait.1.h": "Mirror shine", "trait.1.p": "A glossy finish that catches the light from every angle, in shades that go from sheer to ruby.",
       "trait.2.h": "Cushiony comfort", "trait.2.p": "A soft, comfortable feel on the lips, made to wear from the first coffee to the last photo of the night.",
@@ -758,7 +764,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
       "shades.eyebrow": "الدرجات", "shades.h2": "اختاري لمعتك",
       "shades.p": "اضغطي على أي درجة لتري شكلها على الشفاه. لكل درجة لمسة نهائية ومزاج خاص بها.",
       "stage.aria": "شفاه تضع الدرجة المختارة", "finish": "تشطيب {f}",
-      "sizes.aria": "اختاري الحجم", "size.label": "الحجم", "cur": "ج.م", "total": "الإجمالي", "swatches.aria": "اختاري درجة", "add": "أضيفي إلى الحقيبة", "buy.note": "أضيفي ما تشائين من الدرجات.",
+      "ship.note": "يتم تحديد مصاريف الشحن عبر واتساب عند الطلب.", "ship.bag": "الإجمالي غير شامل الشحن. سنؤكده معك عبر واتساب.", "ship.msg": "الشحن: يتم تحديده عند الطلب", "sizes.aria": "اختاري الحجم", "size.label": "الحجم", "cur": "ج.م", "total": "الإجمالي", "swatches.aria": "اختاري درجة", "add": "أضيفي إلى الحقيبة", "buy.note": "أضيفي ما تشائين من الدرجات.",
       "story.eyebrow": "أسلوب YENA", "story.h2": "الثقة تبدأ <em>بلمسة</em> صغيرة.",
       "trait.1.h": "لمعان المرآة", "trait.1.p": "لمسة نهائية لامعة تلتقط الضوء من كل زاوية، بدرجات تتراوح بين الشفاف والياقوتي.",
       "trait.2.h": "راحة ناعمة", "trait.2.p": "ملمس ناعم ومريح على الشفاه، يرافقك من أول فنجان قهوة إلى آخر صورة في الليل.",
@@ -868,11 +874,11 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
         '<button type="button" data-act="inc" data-id="' + it.k + '" aria-label="' + t('item.add', { name: label }) + '">+</button></span></li>';
     }).join('');
     $('bagEmpty').hidden = items.length > 0;
-    $('bagTotal').hidden = items.length === 0;
+    $('bagTotal').hidden = items.length === 0; $('bagShip').hidden = items.length === 0;
     $('bagSum').textContent = priceTxt(sum());
     $('orderBox').hidden = items.length === 0;
     $('orderText').value = items.length
-      ? t('order.hi') + '\n' + items.map(function (it) { return it.q + ' x ' + it.s.name + ' (' + it.z.id + ' ml) - ' + priceTxt(it.q * it.z.price); }).join('\n') + '\n' + t('total') + ': ' + priceTxt(sum()) + '\n' + t('order.thanks')
+      ? t('order.hi') + '\n' + items.map(function (it) { return it.q + ' x ' + it.s.name + ' (' + it.z.id + ' ml) - ' + priceTxt(it.q * it.z.price); }).join('\n') + '\n' + t('total') + ': ' + priceTxt(sum()) + '\n' + t('ship.msg') + '\n' + t('order.thanks')
       : '';
     $('waBtn').href = 'https://wa.me/201129027571' + ($('orderText').value ? '?text=' + encodeURIComponent($('orderText').value) : '');
     save();
