@@ -377,6 +377,8 @@ html[lang="ar"] .sw .soldtag { font-size: 0.75rem; letter-spacing: 0; }
 .sz[disabled] b { text-decoration: line-through; }
 #add:disabled { cursor: not-allowed; opacity: .55; filter: grayscale(.5); box-shadow: none; }
 #add:disabled::after { display: none; }
+.lowstock { margin-top: 14px; color: var(--gold); font-size: 0.88rem; font-weight: 500; }
+html[lang="ar"] .lowstock { font-size: 0.98rem; }
 .bag-total { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 1rem; }
 .bag-total b { font-weight: 600; color: var(--gold-hi); font-variant-numeric: tabular-nums; }
 html[lang="ar"] .sizes .sz-l { font-size: 0.85rem; }
@@ -653,6 +655,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
           <div class="swatches" id="swatches" role="group" aria-label="Choose a shade" data-i18n-label="swatches.aria"></div>
           <div class="sizes" id="sizes" role="group" aria-label="Choose a size" data-i18n-label="sizes.aria"></div>
           <p class="ship-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span data-i18n="ship.note">Shipping cost is confirmed on WhatsApp when you order.</span></p>
+          <p class="lowstock" id="lowNote" hidden></p>
           <div class="buy">
             <button class="btn btn-gold" id="add" type="button" data-i18n="add">Add to bag</button>
             <small data-i18n="buy.note">Add as many shades as you like.</small>
@@ -742,7 +745,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
       "shades.eyebrow": "The shades", "shades.h2": "Pick your gloss",
       "shades.p": "Tap a shade to see it on. Each one has its own finish and its own mood.",
       "stage.aria": "Lips wearing the selected gloss shade", "finish": "{f} finish",
-      "ship.note": "Shipping cost is confirmed on WhatsApp when you order.", "ship.bag": "Shipping not included. We will confirm it with you on WhatsApp.", "ship.msg": "Shipping: to be confirmed", "sizes.aria": "Choose a size", "size.label": "Size", "cur": "EGP", "soldout": "Sold out", "total": "Total", "swatches.aria": "Choose a shade", "add": "Add to bag", "buy.note": "Add as many shades as you like.",
+      "ship.note": "Shipping cost is confirmed on WhatsApp when you order.", "ship.bag": "Shipping not included. We will confirm it with you on WhatsApp.", "ship.msg": "Shipping: to be confirmed", "sizes.aria": "Choose a size", "size.label": "Size", "cur": "EGP", "soldout": "Sold out", "maxed": "All available are in your bag", "low": "Only {n} left", "total": "Total", "swatches.aria": "Choose a shade", "add": "Add to bag", "buy.note": "Add as many shades as you like.",
       "story.eyebrow": "The YENA way", "story.h2": "Confidence is a <em>small</em> gesture.",
       "trait.1.h": "Mirror shine", "trait.1.p": "A glossy finish that catches the light from every angle, in shades that go from sheer to ruby.",
       "trait.2.h": "Cushiony comfort", "trait.2.p": "A soft, comfortable feel on the lips, made to wear from the first coffee to the last photo of the night.",
@@ -774,7 +777,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
       "shades.eyebrow": "الدرجات", "shades.h2": "اختاري لمعتك",
       "shades.p": "اضغطي على أي درجة لتري شكلها على الشفاه. لكل درجة لمسة نهائية ومزاج خاص بها.",
       "stage.aria": "شفاه تضع الدرجة المختارة", "finish": "تشطيب {f}",
-      "ship.note": "يتم تحديد مصاريف الشحن عبر واتساب عند الطلب.", "ship.bag": "الإجمالي غير شامل الشحن. سنؤكده معك عبر واتساب.", "ship.msg": "الشحن: يتم تحديده عند الطلب", "sizes.aria": "اختاري الحجم", "size.label": "الحجم", "cur": "ج.م", "soldout": "نفدت الكمية", "total": "الإجمالي", "swatches.aria": "اختاري درجة", "add": "أضيفي إلى الحقيبة", "buy.note": "أضيفي ما تشائين من الدرجات.",
+      "ship.note": "يتم تحديد مصاريف الشحن عبر واتساب عند الطلب.", "ship.bag": "الإجمالي غير شامل الشحن. سنؤكده معك عبر واتساب.", "ship.msg": "الشحن: يتم تحديده عند الطلب", "sizes.aria": "اختاري الحجم", "size.label": "الحجم", "cur": "ج.م", "soldout": "نفدت الكمية", "maxed": "وصلت للحد الأقصى المتاح", "low": "متبقي {n} فقط", "total": "الإجمالي", "swatches.aria": "اختاري درجة", "add": "أضيفي إلى الحقيبة", "buy.note": "أضيفي ما تشائين من الدرجات.",
       "story.eyebrow": "أسلوب YENA", "story.h2": "الثقة تبدأ <em>بلمسة</em> صغيرة.",
       "trait.1.h": "لمعان المرآة", "trait.1.p": "لمسة نهائية لامعة تلتقط الضوء من كل زاوية، بدرجات تتراوح بين الشفاف والياقوتي.",
       "trait.2.h": "راحة ناعمة", "trait.2.p": "ملمس ناعم ومريح على الشفاه، يرافقك من أول فنجان قهوة إلى آخر صورة في الليل.",
@@ -817,20 +820,25 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
   function sizeOf(id) { for (var i = 0; i < SIZES.length; i++) if (SIZES[i].id === id) return SIZES[i]; return null; }
   function shadeOf(id) { for (var i = 0; i < SHADES.length; i++) if (SHADES[i].id === id) return SHADES[i]; return null; }
   function priceTxt(n) { return n + ' ' + t('cur'); }
-  var soldOut = {};
-  function isOut(id, sz) { return !!(soldOut[id] || soldOut[id + ':' + sz]); }
+  var soldOut = {}, stockQty = {};
+  function qtyOf(id, sz) { var v = stockQty[id + ':' + sz]; return v == null ? null : v; }
+  function maxFor(k) { var p = k.split(':'), c = qtyOf(p[0], p[1]); return c == null ? 99 : Math.min(99, c); }
+  function isOut(id, sz) { return !!(soldOut[id] || soldOut[id + ':' + sz] || qtyOf(id, sz) === 0); }
   function allOut(id) { return SIZES.every(function (z) { return isOut(id, z.id); }); }
   function updateBuy() {
-    var s = SHADES[current], out = isOut(s.id, size), b = $('add');
-    b.disabled = out;
-    b.textContent = out ? t('soldout') : t('add');
+    var s = SHADES[current], out = isOut(s.id, size), b = $('add'), c = qtyOf(s.id, size);
+    var capped = !out && c != null && (bag[s.id + ':' + size] || 0) >= c;
+    b.disabled = out || capped;
+    b.textContent = out ? t('soldout') : capped ? t('maxed') : t('add');
+    var n = $('lowNote');
+    if (!out && c != null && c <= 5) { n.textContent = t('low', { n: c }); n.hidden = false; } else n.hidden = true;
   }
   function pickSize() {
     var s = SHADES[current];
     if (isOut(s.id, size)) { for (var i = 0; i < SIZES.length; i++) if (!isOut(s.id, SIZES[i].id)) { size = SIZES[i].id; break; } }
   }
   function purgeBag() {
-    Object.keys(bag).forEach(function (k) { var p = k.split(':'); if (isOut(p[0], p[1])) delete bag[k]; });
+    Object.keys(bag).forEach(function (k) { var p = k.split(':'); if (isOut(p[0], p[1])) delete bag[k]; else if (bag[k] > maxFor(k)) bag[k] = maxFor(k); });
   }
 
   try {
@@ -852,11 +860,9 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
   });
   function buildSwatches() {
     sw.innerHTML = SHADES.map(function (s, i) {
-   var out = allOut(s.id);
-    var oneLeft = window.onlyOneLeft && window.onlyOneLeft[s.id];
-    var tagHtml = out ? '<span class="soldtag">' + t('soldout') + '</span>' : (oneLeft ? '<span class="soldtag" style="background: #ff9800;">Only 1 in stock</span>' : '');
-    return '<button type="button" class="sw' + (out ? ' out' : '') + '" data-i="' + i + '" aria-pressed="false">' + tagHtml +
-      '<span class="dot" style="--c:' + s.color + '"></span>' +
+      var out = allOut(s.id);
+      return '<button type="button" class="sw' + (out ? ' out' : '') + '" data-i="' + i + '" aria-pressed="false">' + (out ? '<span class="soldtag">' + t('soldout') + '</span>' : '') +
+        '<span class="dot" style="--c:' + s.color + '"></span>' +
         '<span class="sw-name">' + s.name + '</span><span class="sw-finish">' + finishLabel(s) + '</span></button>';
     }).join('');
   }
@@ -907,6 +913,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
     $('bagTotal').hidden = items.length === 0; $('bagShip').hidden = items.length === 0;
     $('bagSum').textContent = priceTxt(sum());
     $('orderBox').hidden = items.length === 0;
+    updateBuy();
     $('orderText').value = items.length
       ? t('order.hi') + '\n' + items.map(function (it) { return it.q + ' x ' + it.s.name + ' (' + it.z.id + ' ml) - ' + priceTxt(it.q * it.z.price); }).join('\n') + '\n' + t('total') + ': ' + priceTxt(sum()) + '\n' + t('ship.msg') + '\n' + t('order.thanks')
       : '';
@@ -934,7 +941,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
     var b = e.target.closest('button[data-act]'); if (!b) return;
     var li = b.closest('li'); if (!li || li.classList.contains('leaving')) return;
     var id = b.getAttribute('data-id'), inc = b.getAttribute('data-act') === 'inc';
-    var cur = bag[id] || 0, next = Math.max(0, Math.min(99, cur + (inc ? 1 : -1)));
+    var cur = bag[id] || 0, next = Math.max(0, Math.min(maxFor(id), cur + (inc ? 1 : -1)));
     retrigger(b, 'tap');
     if (next === cur) return;
     var dot = li.querySelector('.dot'), bc = center(b);
@@ -1130,16 +1137,14 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
     if (!window.fetch || location.protocol === 'file:') return;
     fetch('stock.json?v=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
       if (!j) return;
-
-soldOut = {}; 
-if (j.soldOut) {
-    j.soldOut.forEach(function (k) { soldOut[String(k)] = true; });
-}
-
-window.onlyOneLeft = {}; 
-if (j.onlyOneLeft) {
-    j.onlyOneLeft.forEach(function (k) { window.onlyOneLeft[String(k)] = true; });
-}
+      soldOut = {}; stockQty = {};
+      (j.soldOut || []).forEach(function (k) { soldOut[String(k)] = true; });
+      var st = j.stock || {};
+      Object.keys(st).forEach(function (id) {
+        var v = st[id];
+        if (v !== null && typeof v === 'object') Object.keys(v).forEach(function (z) { var n = parseInt(v[z], 10); if (n >= 0) stockQty[id + ':' + z] = n; });
+        else { var n = parseInt(v, 10); if (n >= 0) SIZES.forEach(function (z) { stockQty[id + ':' + z.id] = n; }); }
+      });
       purgeBag(); buildSwatches(); select(current, false); renderBag();
     }).catch(function () {});
   }
