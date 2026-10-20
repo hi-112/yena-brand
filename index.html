@@ -852,9 +852,11 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
   });
   function buildSwatches() {
     sw.innerHTML = SHADES.map(function (s, i) {
-      var out = allOut(s.id);
-      return '<button type="button" class="sw' + (out ? ' out' : '') + '" data-i="' + i + '" aria-pressed="false">' + (out ? '<span class="soldtag">' + t('soldout') + '</span>' : '') +
-        '<span class="dot" style="--c:' + s.color + '"></span>' +
+   var out = allOut(s.id);
+    var oneLeft = window.onlyOneLeft && window.onlyOneLeft[s.id];
+    var tagHtml = out ? '<span class="soldtag">' + t('soldout') + '</span>' : (oneLeft ? '<span class="soldtag" style="background: #ff9800;">Only 1 in stock</span>' : '');
+    return '<button type="button" class="sw' + (out ? ' out' : '') + '" data-i="' + i + '" aria-pressed="false">' + tagHtml +
+      '<span class="dot" style="--c:' + s.color + '"></span>' +
         '<span class="sw-name">' + s.name + '</span><span class="sw-finish">' + finishLabel(s) + '</span></button>';
     }).join('');
   }
@@ -1127,8 +1129,17 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
   function loadStock() {
     if (!window.fetch || location.protocol === 'file:') return;
     fetch('stock.json?v=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-      if (!j || !j.soldOut || !j.soldOut.length) return;
-      soldOut = {}; j.soldOut.forEach(function (k) { soldOut[String(k)] = true; });
+      if (!j) return;
+
+soldOut = {}; 
+if (j.soldOut) {
+    j.soldOut.forEach(function (k) { soldOut[String(k)] = true; });
+}
+
+window.onlyOneLeft = {}; 
+if (j.onlyOneLeft) {
+    j.onlyOneLeft.forEach(function (k) { window.onlyOneLeft[String(k)] = true; });
+}
       purgeBag(); buildSwatches(); select(current, false); renderBag();
     }).catch(function () {});
   }
