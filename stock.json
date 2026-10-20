@@ -1,3 +1,4 @@
 {
-  "soldOut": ["roast:2.5"]
+  "soldOut": [],
+  "OnlyOneInStock": ["red:3"]
 }
