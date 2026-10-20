@@ -377,7 +377,10 @@ html[lang="ar"] .sw .soldtag { font-size: 0.75rem; letter-spacing: 0; }
 .sz[disabled] b { text-decoration: line-through; }
 #add:disabled { cursor: not-allowed; opacity: .55; filter: grayscale(.5); box-shadow: none; }
 #add:disabled::after { display: none; }
-.lowstock { margin-top: 14px; color: var(--gold); font-size: 0.88rem; font-weight: 500; }
+.sizes-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 22px; }
+.sizes-row .sizes { margin-top: 0; }
+.sizes-row .lowstock { margin: 0; }
+.lowstock { margin-top: 0; color: var(--gold); font-size: 0.88rem; font-weight: 500; }
 html[lang="ar"] .lowstock { font-size: 0.98rem; }
 .bag-total { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 1rem; }
 .bag-total b { font-weight: 600; color: var(--gold-hi); font-variant-numeric: tabular-nums; }
@@ -653,9 +656,11 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
           <h3 id="shadeName">Brick Red</h3>
           <p class="note" id="shadeNote"></p>
           <div class="swatches" id="swatches" role="group" aria-label="Choose a shade" data-i18n-label="swatches.aria"></div>
-          <div class="sizes" id="sizes" role="group" aria-label="Choose a size" data-i18n-label="sizes.aria"></div>
+          <div class="sizes-row">
+            <div class="sizes" id="sizes" role="group" aria-label="Choose a size" data-i18n-label="sizes.aria"></div>
+            <p class="lowstock" id="lowNote" hidden></p>
+          </div>
           <p class="ship-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span data-i18n="ship.note">Shipping cost is confirmed on WhatsApp when you order.</span></p>
-          <p class="lowstock" id="lowNote" hidden></p>
           <div class="buy">
             <button class="btn btn-gold" id="add" type="button" data-i18n="add">Add to bag</button>
             <small data-i18n="buy.note">Add as many shades as you like.</small>
