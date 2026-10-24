@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#240608">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YENA">
 <meta name="description" content="YENA Brand lip gloss. A little gloss, a lot of confidence.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YENA Brand">
@@ -1178,5 +1184,10 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
 })();
 </script>
 
+<script>
+if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  window.addEventListener('load', function () { try { navigator.serviceWorker.register('sw.js').catch(function () {}); } catch (e) {} });
+}
+</script>
 </body>
 </html>

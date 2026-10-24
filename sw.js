@@ -1,31 +1,19 @@
-const CACHE = "yena-v4";
-const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
-
-self.addEventListener("install", e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));
-  self.skipWaiting();
+// YENA service worker: network first, so updates always show; cache is only an offline fallback.
+const CACHE = 'yena-v3';
+const CORE = ['./', 'index.html', 'swatches.jpg', 'og-image.jpg', 'icon-192.png', 'icon-512.png'];
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(CACHE).then(c => Promise.all(CORE.map(u => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));
 });
-
-self.addEventListener("activate", e => {
-  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))));
-  self.clients.claim();
+self.addEventListener('activate', e => {
+  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
-
-// Network first (so price/stock edits show up), cache fallback when offline
-self.addEventListener("fetch", e => {
-  const req = e.request;
-  if (req.method !== "GET") return;
-  const url = new URL(req.url);
-  if (url.pathname.endsWith("stock.json")) return; // always live, never cached
+self.addEventListener('fetch', e => {
+  const r = e.request;
+  if (r.method !== 'GET' || new URL(r.url).origin !== location.origin) return;
   e.respondWith(
-    fetch(req)
-      .then(res => {
-        if (res && (res.ok || res.type === "opaque")) {
-          const copy = res.clone();
-          caches.open(CACHE).then(c => c.put(req, copy));
-        }
-        return res;
-      })
-      .catch(() => caches.match(req).then(r => r || caches.match("./index.html")))
+    fetch(r, { cache: 'no-cache' }).then(res => {
+      if (res && res.ok && !r.url.includes('stock.json')) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(r, copy)); }
+      return res;
+    }).catch(() => caches.match(r).then(m => m || caches.match('index.html')))
   );
 });
