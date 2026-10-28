@@ -3,19 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#240608">
-<link rel="apple-touch-icon" href="icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="YENA">
 <meta name="description" content="YENA Brand lip gloss. A little gloss, a lot of confidence.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YENA Brand">
 <meta property="og:title" content="YENA Brand">
 <meta property="og:description" content="A little gloss, a lot of confidence.">
-<meta property="og:url" content="https://yenabrand.github.io/">
-<meta property="og:image" content="https://yenabrand.github.io/og-image.jpg">
+<meta property="og:url" content="https://hi-112.github.io/yena-brand/">
+<meta property="og:image" content="https://hi-112.github.io/yena-brand/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="YENA Brand">
 <meta name="twitter:description" content="A little gloss, a lot of confidence.">
-<meta name="twitter:image" content="https://yenabrand.github.io/og-image.jpg">
+<meta name="twitter:image" content="https://hi-112.github.io/yena-brand/og-image.jpg">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>YENA Brand</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -285,6 +279,16 @@ section { padding-block: clamp(44px, 7vw, 88px); border-top: 1px solid var(--lin
 }
 
 .pick h3 { font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.1; }
+.ingr { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+.ingr-h { margin: 0 0 14px; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+.ingr ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 22px; }
+.ingr li b { display: block; font-family: var(--f-display); font-weight: 500; font-size: 1.12rem; line-height: 1.25; color: var(--gold-hi); margin-bottom: 4px; }
+.ingr li span { display: block; font-size: 0.86rem; line-height: 1.5; color: var(--ink-soft); font-weight: 300; }
+.ingr li span::before { content: "\2022\00a0"; color: var(--gold); }
+@media (max-width: 420px) { .ingr ul { grid-template-columns: 1fr; } }
+html[lang="ar"] .ingr-h { letter-spacing: 0; font-size: 0.9rem; }
+html[lang="ar"] .ingr li b { font-size: 1.2rem; }
+html[lang="ar"] .ingr li span { font-size: 0.95rem; }
 .pick .note { margin-top: 12px; color: var(--ink-soft); font-weight: 300; max-width: 44ch; min-height: 3.3em; }
 .swatches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
 .sw {
@@ -582,6 +586,23 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
 </script>
 
 
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#220608">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="YENA">
+<style>
+#pwaInstall{display:none;position:fixed;left:14px;right:14px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:90;
+  background:var(--bg-raise);color:var(--ink);border:1px solid var(--line);padding:12px 14px;border-radius:16px;
+  align-items:center;justify-content:space-between;gap:10px;font-size:14px;box-shadow:0 10px 30px var(--sh-strong)}
+#pwaInstall .row2{display:flex;gap:8px;align-items:center}
+#pwaInstall button{font:inherit;border-radius:999px;cursor:pointer;padding:8px 16px;border:0}
+#pwaInstall .go{background:linear-gradient(135deg,var(--metal-1),var(--metal-2) 55%,var(--metal-3));color:var(--on-metal);font-weight:600}
+#pwaInstall .no{background:transparent;color:var(--ink-soft);font-size:18px;padding:4px 8px}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -667,6 +688,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
           <h3 id="shadeName">Brick Red</h3>
           <p class="note" id="shadeNote"></p>
           <div class="swatches" id="swatches" role="group" aria-label="Choose a shade" data-i18n-label="swatches.aria"></div>
+          <div class="ingr" id="ingr"><p class="ingr-h" data-i18n="ing.h">What is inside</p><ul id="ingrList"></ul></div>
           <div class="sizes-row">
             <div class="sizes" id="sizes" role="group" aria-label="Choose a size" data-i18n-label="sizes.aria"></div>
             <p class="lowstock" id="lowNote" hidden></p>
@@ -756,9 +778,9 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
 <script>
 (function () {
   var SHADES = [
-    { id: 'red',   name: 'Brick Red', finish: 'glass', label: 'Glass', color: '#842923', deep: '#e8a79c', glow: 'rgba(190,40,30,.5)',  alpha: 0.9,  note: 'A warm brick red with a wet-look shine. Bold and easy to wear.' },
-    { id: 'roast', name: 'Toffee Nude',     finish: 'glass', label: 'Glass', color: '#9e5641', deep: '#d6b3a3', glow: 'rgba(150,85,65,.5)',  alpha: 0.88, note: 'A soft toffee nude with a cushiony glow. Quiet, chic and everyday.' },
-    { id: 'perky', name: 'Candy Pink',  finish: 'glass', label: 'Glass', color: '#f67ea1', deep: '#f6c4cf', glow: 'rgba(235,110,145,.5)', alpha: 0.86, note: 'A juicy, fluffy pink that is fresh, bright and full of life.' }
+    { id: 'red',   flavor: 'strawberry', name: 'Brick Red', finish: 'glass', label: 'Glass', color: '#842923', deep: '#e8a79c', glow: 'rgba(190,40,30,.5)',  alpha: 0.9,  note: 'A warm brick red with a wet-look shine. Bold and easy to wear.' },
+    { id: 'roast', flavor: 'coconut', name: 'Toffee Nude',     finish: 'glass', label: 'Glass', color: '#9e5641', deep: '#d6b3a3', glow: 'rgba(150,85,65,.5)',  alpha: 0.88, note: 'A soft toffee nude with a cushiony glow. Quiet, chic and everyday.' },
+    { id: 'perky', flavor: 'strawberry', name: 'Candy Pink',  finish: 'glass', label: 'Glass', color: '#f67ea1', deep: '#f6c4cf', glow: 'rgba(235,110,145,.5)', alpha: 0.86, note: 'A juicy, fluffy pink that is fresh, bright and full of life.' }
   ];
   var I18N = {
     en: {
@@ -792,6 +814,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
       "toast.copied": "Order message copied",
       "order.hi": "Hi YENA! I'd like to order:", "order.thanks": "Thank you!",
       "theme.toLight": "Switch to light mode", "theme.toDark": "Switch to dark mode",
+      "ing.h": "What is inside", "ing.finish": "Glossy finish", "ing.coconut": "Coconut oil", "ing.coconut.1": "Promotes healing of damaged lips", "ing.coconut.2": "Anti-bacterial properties", "ing.vite": "Vitamin E", "ing.vite.1": "Retains moisture", "ing.vite.2": "Smoothens the texture of lips", "ing.flavor": "{f} flavor", "ing.flavor.1": "Sweet scent", "ing.flavor.2": "Delicious taste", "flavor.strawberry": "Strawberry", "flavor.coconut": "Coconut",
       "lang.switch": "Switch to Arabic"
     },
     ar: {
@@ -825,6 +848,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
       "toast.copied": "تم نسخ رسالة الطلب",
       "order.hi": "مرحباً YENA! أودّ طلب:", "order.thanks": "شكراً لكم!",
       "theme.toLight": "التبديل إلى الوضع الفاتح", "theme.toDark": "التبديل إلى الوضع الداكن",
+      "ing.h": "المكونات", "ing.finish": "لمعة جلوسي", "ing.coconut": "زيت جوز الهند", "ing.coconut.1": "يساعد على التئام الشفاه المتضررة", "ing.coconut.2": "خصائص مضادة للبكتيريا", "ing.vite": "فيتامين E", "ing.vite.1": "يحافظ على الرطوبة", "ing.vite.2": "يجعل ملمس الشفاه أنعم", "ing.flavor": "نكهة {f}", "ing.flavor.1": "رائحة حلوة", "ing.flavor.2": "طعم لذيذ", "flavor.strawberry": "الفراولة", "flavor.coconut": "جوز الهند",
       "lang.switch": "التبديل إلى الإنجليزية"
     }
   };
@@ -842,6 +866,14 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
     return str;
   }
   function finishLabel(s) { return lang === 'ar' ? SHADE_AR[s.id].label : s.label; }
+  function renderIngr(s) {
+    var li = function (title, a, b) { return '<li><b>' + title + '</b>' + (a ? '<span>' + a + '</span>' : '') + (b ? '<span>' + b + '</span>' : '') + '</li>'; };
+    $('ingrList').innerHTML =
+      li(t('ing.finish')) +
+      li(t('ing.coconut'), t('ing.coconut.1'), t('ing.coconut.2')) +
+      li(t('ing.vite'), t('ing.vite.1'), t('ing.vite.2')) +
+      li(t('ing.flavor', { f: t('flavor.' + s.flavor) }), t('ing.flavor.1'), t('ing.flavor.2'));
+  }
   function shadeNote(s) { return lang === 'ar' ? SHADE_AR[s.id].note : s.note; }
   var $ = function (id) { return document.getElementById(id); };
   var stage = $('stage'), sw = $('swatches'), current = 0, bag = {}, toastTimer, justAdded = null, closeTimer;
@@ -907,6 +939,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
     stage.setAttribute('data-finish', s.finish);
     $('shadeName').textContent = s.name;
     $('shadeNote').textContent = shadeNote(s);
+    renderIngr(s);
     $('finishTag').textContent = t('finish', { f: finishLabel(s) });
     Array.prototype.forEach.call(sw.children, function (b, j) { b.setAttribute('aria-pressed', String(j === i)); });
     if (animate) { stage.classList.remove('pop'); void stage.offsetWidth; stage.classList.add('pop'); }
@@ -1184,10 +1217,26 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
 })();
 </script>
 
+<div id="pwaInstall" role="dialog" aria-live="polite">
+  <span id="pwaMsg">Install the YENA app</span>
+  <span class="row2"><button class="go" id="pwaGo" type="button">Install</button><button class="no" id="pwaNo" type="button" aria-label="Close">&times;</button></span>
+</div>
 <script>
-if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
-  window.addEventListener('load', function () { try { navigator.serviceWorker.register('sw.js').catch(function () {}); } catch (e) {} });
-}
+(function(){
+  var ar = function(){ return document.documentElement.lang === 'ar'; };
+  var bar = document.getElementById('pwaInstall'), dp = null;
+  function label(){
+    document.getElementById('pwaMsg').textContent = ar() ? 'ثبّتي تطبيق YENA على موبايلك' : 'Install the YENA app';
+    document.getElementById('pwaGo').textContent = ar() ? 'تثبيت' : 'Install';
+  }
+  window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); dp = e; label(); bar.style.display = 'flex'; });
+  document.getElementById('pwaGo').onclick = function(){ if(!dp) return; dp.prompt(); dp.userChoice.then(function(){ dp = null; bar.style.display = 'none'; }); };
+  document.getElementById('pwaNo').onclick = function(){ bar.style.display = 'none'; };
+  window.addEventListener('appinstalled', function(){ bar.style.display = 'none'; });
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
+  }
+})();
 </script>
 </body>
 </html>
