@@ -339,6 +339,34 @@ html[lang="ar"] .ingr li span { font-size: 0.95rem; }
 .loyal-row .btn { padding: 14px 24px; }
 .loyal-note { margin-top: 14px; font-size: .82rem; color: var(--ink-soft); font-weight: 300; }
 html[lang="ar"] .loyal-row input { letter-spacing: 0; }
+.bag-deal { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0 2px; font-size: .92rem; color: var(--ink-soft); }
+.bag-deal b { font-weight: 600; color: #3fa56b; font-variant-numeric: tabular-nums; }
+.bf-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(10px, 2vw, 18px); max-width: 960px; margin-inline: auto; }
+.bf-card { grid-column: span 3; text-align: center; border-radius: 22px; padding: 20px 14px 18px; border: 1px solid var(--line); background: linear-gradient(160deg, var(--metal-1), var(--metal-2) 60%, var(--metal-3)); color: var(--on-metal); box-shadow: 0 16px 34px -20px rgba(120,40,30,.55); position: relative; }
+.bf-card.pair { grid-column: span 2; }
+.bf-card .bf-l { font-family: var(--f-display); font-size: clamp(1.05rem, 2.4vw, 1.4rem); font-weight: 500; }
+.bf-card .bf-p { margin: 4px 0 0; font-family: var(--f-display); font-size: clamp(1.9rem, 5vw, 2.9rem); font-weight: 600; line-height: 1.05; }
+.bf-card .bf-p small { font-size: .4em; font-weight: 500; letter-spacing: .04em; margin-inline-start: 4px; }
+.bf-card .bf-was { margin-top: 6px; font-size: .9rem; opacity: .75; text-decoration: line-through; text-decoration-color: #a8232f; text-decoration-thickness: 2px; }
+.bf-card .bf-tag { position: absolute; top: -10px; inset-inline-end: 14px; background: #2a0709; color: var(--metal-1); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+html[lang="ar"] .bf-card .bf-tag { letter-spacing: 0; font-size: .75rem; }
+.bf-sep { grid-column: 1 / -1; text-align: center; color: var(--gold); letter-spacing: .3em; font-size: .8rem; }
+.bf-foot { text-align: center; margin: 22px auto 0; max-width: 56ch; color: var(--ink-soft); }
+.bf-foot strong { display: block; font-family: var(--f-display); font-style: italic; font-size: 1.4rem; font-weight: 500; color: var(--gold-hi); margin-bottom: 4px; }
+@media (max-width: 600px) { .bf-card.pair { grid-column: span 6; } .bf-card { grid-column: span 3; padding: 16px 10px; } }
+.bf-bar { display: block; overflow: hidden; margin: -20px calc(-1 * max(16px, env(safe-area-inset-right, 0px))) 14px calc(-1 * max(16px, env(safe-area-inset-left, 0px))); background: linear-gradient(90deg, #4a0f18, #6e1a26 50%, #4a0f18); color: #f8d9c6; border-bottom: 1px solid rgba(248,217,198,.25); text-decoration: none; position: relative; z-index: 5; }
+.bf-track { display: flex; width: max-content; animation: bfScroll 34s linear infinite; }
+.bf-bar:hover .bf-track, .bf-bar:focus-visible .bf-track { animation-play-state: paused; }
+.bf-group { display: flex; align-items: center; flex: none; }
+.bf-group span { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; padding: 9px 22px; font-size: .84rem; letter-spacing: .08em; text-transform: uppercase; }
+.bf-group span b { font-weight: 600; color: #fff; letter-spacing: .04em; }
+.bf-group .bf-st { padding: 0; width: 12px; height: 12px; color: #e3a98f; }
+.bf-group .bf-hot { color: #fff; font-weight: 600; }
+html[lang="ar"] .bf-group span { letter-spacing: 0; text-transform: none; font-size: .95rem; }
+@keyframes bfScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+html[dir="rtl"] .bf-track { animation-name: bfScrollRtl; }
+@keyframes bfScrollRtl { from { transform: translateX(0); } to { transform: translateX(50%); } }
+@media (prefers-reduced-motion: reduce) { .bf-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; } .bf-group[aria-hidden="true"] { display: none; } }
 .story { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(28px, 6vw, 80px); }
 .story > * { min-width: 0; }
 .story h2 { font-size: clamp(2.1rem, 4.8vw, 3.6rem); line-height: 1.08; }
@@ -626,6 +654,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
 </style>
 </head>
 <body>
+<a class="bf-bar" href="#offers" aria-label="Black Friday offers" data-i18n-label="bf.h2"><div class="bf-track"><div class="bf-group"><span class="bf-hot" data-i18n="bf.eyebrow">Black Friday</span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span>2.5 ml <b>115</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span>3 ml <b>150</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.2s">2 Small</i> <b>220</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.2l">2 Large</i> <b>290</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.sl">Small + Large</i> <b>255</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span class="bf-hot" data-i18n="bf.limited">Limited time only</span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg></div><div class="bf-group" aria-hidden="true"><span class="bf-hot" data-i18n="bf.eyebrow">Black Friday</span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span>2.5 ml <b>115</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span>3 ml <b>150</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.2s">2 Small</i> <b>220</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.2l">2 Large</i> <b>290</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.sl">Small + Large</i> <b>255</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span class="bf-hot" data-i18n="bf.limited">Limited time only</span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg></div><div class="bf-group" aria-hidden="true"><span class="bf-hot" data-i18n="bf.eyebrow">Black Friday</span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span>2.5 ml <b>115</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span>3 ml <b>150</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.2s">2 Small</i> <b>220</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.2l">2 Large</i> <b>290</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.sl">Small + Large</i> <b>255</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span class="bf-hot" data-i18n="bf.limited">Limited time only</span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg></div><div class="bf-group" aria-hidden="true"><span class="bf-hot" data-i18n="bf.eyebrow">Black Friday</span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span>2.5 ml <b>115</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span>3 ml <b>150</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.2s">2 Small</i> <b>220</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.2l">2 Large</i> <b>290</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span><i data-i18n="bf.sl">Small + Large</i> <b>255</b> <i data-i18n="cur">EGP</i></span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg><span class="bf-hot" data-i18n="bf.limited">Limited time only</span><svg class="bf-st" aria-hidden="true"><use href="#spark"/></svg></div></div></a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="spark" viewBox="0 0 24 24"><path d="M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z" fill="currentColor"/></symbol>
   <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.6v2.4M12 19v2.4M2.6 12H5M19 12h2.4M5.4 5.4l1.7 1.7M16.9 16.9l1.7 1.7M5.4 18.6l1.7-1.7M16.9 7.1l1.7-1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
@@ -676,6 +705,23 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
         <svg class="spark orb o4" aria-hidden="true"><use href="#spark"/></svg>
       </div>
     </div>
+
+    <section id="offers" aria-labelledby="offers-h">
+      <div class="sec-head">
+        <p class="eyebrow"><svg class="spark"><use href="#spark"/></svg> <span data-i18n="bf.eyebrow">Black Friday</span></p>
+        <h2 id="offers-h" data-i18n="bf.h2">Black Friday offers</h2>
+        <p data-i18n="bf.p">Limited time only. Pair any two bottles and the offer is applied for you in your bag.</p>
+      </div>
+      <div class="bf-grid">
+        <div class="bf-card"><div class="bf-l">2.5 ml</div><p class="bf-p">115<small data-i18n="cur">EGP</small></p></div>
+        <div class="bf-card"><div class="bf-l">3 ml</div><p class="bf-p">150<small data-i18n="cur">EGP</small></p></div>
+        <div class="bf-sep" aria-hidden="true">&middot; &middot; &middot;</div>
+        <div class="bf-card pair"><span class="bf-tag" data-i18n="bf.save">Save 10</span><div class="bf-l" data-i18n="bf.2s">2 Small</div><p class="bf-p">220<small data-i18n="cur">EGP</small></p><div class="bf-was">230 <span data-i18n="cur">EGP</span></div></div>
+        <div class="bf-card pair"><span class="bf-tag" data-i18n="bf.save">Save 10</span><div class="bf-l" data-i18n="bf.2l">2 Large</div><p class="bf-p">290<small data-i18n="cur">EGP</small></p><div class="bf-was">300 <span data-i18n="cur">EGP</span></div></div>
+        <div class="bf-card pair"><span class="bf-tag" data-i18n="bf.save">Save 10</span><div class="bf-l" data-i18n="bf.sl">Small + Large</div><p class="bf-p">255<small data-i18n="cur">EGP</small></p><div class="bf-was">265 <span data-i18n="cur">EGP</span></div></div>
+      </div>
+      <p class="bf-foot"><strong data-i18n="bf.limited">Limited time only</strong><span data-i18n="bf.note">Every two bottles in your bag take 10 EGP off, and you will see it in your total.</span></p>
+    </section>
 
     <section id="shades" aria-labelledby="shades-h">
       <div class="sec-head">
@@ -809,6 +855,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
   <div class="bag-head"><h3 data-i18n="bag.title">Your bag</h3><button class="x" id="bagClose" type="button" aria-label="Close bag" data-i18n-label="bag.close">&times;</button></div>
   <ul id="bagList"></ul>
   <p class="empty" id="bagEmpty" data-i18n="bag.empty">Your bag is empty. Pick a shade and tap Add to bag.</p>
+  <div class="bag-deal" id="bagDeal" hidden><span data-i18n="deal.line">Black Friday offer</span><b id="bagDealAmt"></b></div>
   <div class="bag-total" id="bagTotal" hidden><span data-i18n="total">Total</span><b id="bagSum"></b></div>
   <p class="ship-note" id="bagShip" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span data-i18n="ship.bag">Shipping not included. We will confirm it with you on WhatsApp.</span></p>
   <div class="order" id="orderBox" hidden>
@@ -842,6 +889,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
       "shades.eyebrow": "The shades", "shades.h2": "Pick your gloss",
       "skin.eyebrow": "On skin", "skin.h2": "Your shade, on every skin tone", "skin.p": "Brick Red, Toffee Nude and Candy Pink, swatched on light, medium and deep skin.", "skin.alt": "Brick Red, Toffee Nude and Candy Pink swatched on three skin tones",
       "loy.eyebrow": "YENA card", "loy.h2": "Collect 3, unlock a surprise", "loy.p": "Add a stamp after every purchase. The fourth one is a gift from us, and it is a surprise.", "loy.ph": "Enter your code", "loy.aria": "Stamp code", "loy.add": "Add stamp", "loy.claim": "Claim my surprise", "loy.new": "Start a new card", "loy.note": "You get a code from YENA with your order. Your card is saved on this phone.", "loy.ok": "Stamp added!", "loy.bad": "That code is not valid. Check it and try again.", "loy.used": "This code was already used on this phone.", "loy.empty": "Type your code first.", "loy.net": "Could not check the code right now. Try again in a moment.", "loy.done": "Your card is complete. Your surprise is waiting!", "loy.left": "{n} more to unlock your surprise.", "loy.left1": "1 more to unlock your surprise.", "loy.claimed": "Surprise claimed. Enjoy it!", "loy.wa": "Hi YENA! I completed my loyalty card and I would like my surprise gift. Card ID: {id}", "loy.stamp": "Stamp {n}", "loy.giftlbl": "Surprise gift",
+      "bf.eyebrow": "Black Friday", "bf.h2": "Black Friday offers", "bf.p": "Limited time only. Pair any two bottles and the offer is applied for you in your bag.", "bf.2s": "2 Small", "bf.2l": "2 Large", "bf.sl": "Small + Large", "bf.save": "Save 10", "bf.limited": "Limited time only", "bf.note": "Every two bottles in your bag take 10 EGP off, and you will see it in your total.", "deal.line": "Black Friday offer",
       "shades.p": "Tap a shade to see it on. Each one has its own finish and its own mood.",
       "stage.aria": "Lips wearing the selected gloss shade", "finish": "{f} finish",
       "ship.note": "Shipping cost is confirmed on WhatsApp when you order.", "ship.bag": "Shipping not included. We will confirm it with you on WhatsApp.", "ship.msg": "Shipping: to be confirmed", "sizes.aria": "Choose a size", "size.label": "Size", "cur": "EGP", "soldout": "Sold out", "maxed": "All available are in your bag", "low": "Only {n} left", "total": "Total", "swatches.aria": "Choose a shade", "add": "Add to bag", "buy.note": "Add as many shades as you like.",
@@ -877,6 +925,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
       "shades.eyebrow": "الدرجات", "shades.h2": "اختاري لمعتك",
       "skin.eyebrow": "على البشرة", "skin.h2": "لمعتك على كل درجات البشرة", "skin.p": "Brick Red وToffee Nude وCandy Pink على بشرة فاتحة ومتوسطة وداكنة.", "skin.alt": "الدرجات الثلاث على ثلاث درجات بشرة",
       "loy.eyebrow": "كارت YENA", "loy.h2": "اجمعي 3 واكسبي مفاجأة", "loy.p": "ضيفي ختم بعد كل مشتريات. الختم الرابع هدية مننا، وهي مفاجأة.", "loy.ph": "اكتبي الكود", "loy.aria": "كود الختم", "loy.add": "إضافة ختم", "loy.claim": "استلمي مفاجأتي", "loy.new": "ابدئي كارت جديد", "loy.note": "هتاخدي كود من YENA مع طلبك. الكارت بيتحفظ على موبايلك.", "loy.ok": "اتضاف الختم!", "loy.bad": "الكود ده مش صحيح. راجعيه وجربي تاني.", "loy.used": "الكود ده اتستخدم قبل كده على الموبايل ده.", "loy.empty": "اكتبي الكود الأول.", "loy.net": "مش قادرين نتأكد من الكود دلوقتي. جربي بعد شوية.", "loy.done": "كارتك كمل! مفاجأتك مستنياكي.", "loy.left": "فاضل {n} ختم على مفاجأتك.", "loy.left1": "فاضل ختم واحد على مفاجأتك.", "loy.claimed": "اتسلمت المفاجأة. بالهنا!", "loy.wa": "أهلاً YENA! كملت كارت الولاء وعايزة مفاجأتي. رقم الكارت: {id}", "loy.stamp": "ختم {n}", "loy.giftlbl": "هدية مفاجأة",
+      "bf.eyebrow": "بلاك فرايداي", "bf.h2": "عروض بلاك فرايداي", "bf.p": "لفترة محدودة فقط. اختاري أي زجاجتين والعرض بيتحسب لوحده في الشنطة.", "bf.2s": "2 صغير", "bf.2l": "2 كبير", "bf.sl": "صغير + كبير", "bf.save": "وفّري 10", "bf.limited": "لفترة محدودة فقط", "bf.note": "كل زجاجتين في شنطتك بينزل منهم 10 جنيه، وهتشوفيه في الإجمالي.", "deal.line": "عرض بلاك فرايداي",
       "shades.p": "اضغطي على أي درجة لتري شكلها على الشفاه. لكل درجة لمسة نهائية ومزاج خاص بها.",
       "stage.aria": "شفاه تضع الدرجة المختارة", "finish": "تشطيب {f}",
       "ship.note": "يتم تحديد مصاريف الشحن عبر واتساب عند الطلب.", "ship.bag": "الإجمالي غير شامل الشحن. سنؤكده معك عبر واتساب.", "ship.msg": "الشحن: يتم تحديده عند الطلب", "sizes.aria": "اختاري الحجم", "size.label": "الحجم", "cur": "ج.م", "soldout": "نفدت الكمية", "maxed": "وصلت للحد الأقصى المتاح", "low": "متبقي {n} فقط", "total": "الإجمالي", "swatches.aria": "اختاري درجة", "add": "أضيفي إلى الحقيبة", "buy.note": "أضيفي ما تشائين من الدرجات.",
@@ -927,7 +976,7 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
   function shadeNote(s) { return lang === 'ar' ? SHADE_AR[s.id].note : s.note; }
   var $ = function (id) { return document.getElementById(id); };
   var stage = $('stage'), sw = $('swatches'), current = 0, bag = {}, toastTimer, justAdded = null, closeTimer;
-  var SIZES = [{ id: '2.5', price: 100 }, { id: '3', price: 136 }], size = '2.5';
+  var SIZES = [{ id: '2.5', price: 115 }, { id: '3', price: 150 }], size = '2.5';
   function sizeOf(id) { for (var i = 0; i < SIZES.length; i++) if (SIZES[i].id === id) return SIZES[i]; return null; }
   function shadeOf(id) { for (var i = 0; i < SHADES.length; i++) if (SHADES[i].id === id) return SHADES[i]; return null; }
   function priceTxt(n) { return n + ' ' + t('cur'); }
@@ -1009,7 +1058,10 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
     SHADES.forEach(function (s) { SIZES.forEach(function (z) { var k = s.id + ':' + z.id; if (bag[k] > 0) out.push({ s: s, z: z, k: k, q: bag[k] }); }); });
     return out;
   }
-  function sum() { return bagItems().reduce(function (n, it) { return n + it.q * it.z.price; }, 0); }
+  var DEAL_OFF = 10; /* Black Friday: every 2 bottles in the bag = 10 EGP off */
+  function gross() { return bagItems().reduce(function (n, it) { return n + it.q * it.z.price; }, 0); }
+  function deal() { return DEAL_OFF * Math.floor(total() / 2); }
+  function sum() { return gross() - deal(); }
   function renderBag(keepList) {
     var items = bagItems();
     $('bagCount').textContent = total();
@@ -1024,10 +1076,11 @@ try { var savedTheme = localStorage.getItem('yena-theme'); if (savedTheme === 'l
     $('bagEmpty').hidden = items.length > 0;
     $('bagTotal').hidden = items.length === 0; $('bagShip').hidden = items.length === 0;
     $('bagSum').textContent = priceTxt(sum());
+    $('bagDeal').hidden = deal() === 0; $('bagDealAmt').textContent = '-' + priceTxt(deal());
     $('orderBox').hidden = items.length === 0;
     updateBuy();
     $('orderText').value = items.length
-      ? t('order.hi') + '\n' + items.map(function (it) { return it.q + ' x ' + it.s.name + ' (' + it.z.id + ' ml) - ' + priceTxt(it.q * it.z.price); }).join('\n') + '\n' + t('total') + ': ' + priceTxt(sum()) + '\n' + t('ship.msg') + '\n' + t('order.thanks')
+      ? t('order.hi') + '\n' + items.map(function (it) { return it.q + ' x ' + it.s.name + ' (' + it.z.id + ' ml) - ' + priceTxt(it.q * it.z.price); }).join('\n') + (deal() ? '\n' + t('deal.line') + ': -' + priceTxt(deal()) : '') + '\n' + t('total') + ': ' + priceTxt(sum()) + '\n' + t('ship.msg') + '\n' + t('order.thanks')
       : '';
     $('waBtn').href = 'https://wa.me/201129027571' + ($('orderText').value ? '?text=' + encodeURIComponent($('orderText').value) : '');
     save();
